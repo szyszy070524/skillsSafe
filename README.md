@@ -1,5 +1,9 @@
 # Agent Skills 安全风险与应对
 
+🔄 **语言选择 / Language Switch**  
+- [中文 (Chinese)](#agent-skills-安全风险与应对)  
+- [English](#agent-skills-security-risks-and-mitigation)
+
 随着 "agent skills" 的广泛采用，我们正在进入软件复用的新阶段 —— 但同时也进入了安全风险的新阶段。
 
 大多数人将 skills 视为无害的构建块。复制、粘贴、运行。
@@ -45,6 +49,10 @@
 ---
 
 # Agent Skills Security Risks and Mitigation
+
+🔄 **语言选择 / Language Switch**  
+- [中文 (Chinese)](#agent-skills-安全风险与应对)  
+- [English](#agent-skills-security-risks-and-mitigation)
 
 As "agent skills" become more widely adopted, we're entering a new phase of software reuse — but also a new phase of security risk.
 
