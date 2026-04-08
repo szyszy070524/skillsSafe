@@ -1,97 +1,231 @@
-# Agent Skills 安全风险与应对
+# GitHub 恶意代码与安全扫描器（Agent Skills）
 
-🔄 **语言选择 / Language Switch**  
-- [中文 (Chinese)](#agent-skills-安全风险与应对)  
-- [English](#agent-skills-security-risks-and-mitigation)
+Detect malware, suspicious scripts, cookie stealing, and sensitive data leaks in agent skill packages and GitHub repositories.
 
-随着 "agent skills" 的广泛采用，我们正在进入软件复用的新阶段 —— 但同时也进入了安全风险的新阶段。
-
-大多数人将 skills 视为无害的构建块。复制、粘贴、运行。
-
-但现实是：**skills 是可执行逻辑**，通常可以访问敏感数据、系统环境和外部 API。
-
-这意味着恶意或未经充分审查的 skill 可能：
-
-* 窃取 cookies、令牌或本地文件
-* 收集个人数据（姓名、电子邮件、系统信息）
-* 执行隐藏命令或持久化机制
-* 在工作流中充当静默后门
-
-问题不仅仅是个别不良行为者 —— 而是围绕 skills **缺乏共享的安全思维**。
-
-我们需要开始问：
-
-* 这个 skill 来自哪里？
-* 它在底层实际上做了什么？
-* 有人审核或验证过它吗？
-
-安全不应该是事后考虑。它应该是 skill 生态系统本身的一部分。
-
-为了帮助朝这个方向前进，我创建了一个简单的检测项目：
-`https://github.com/szyszy070524/detection`
-
-它并不意味着完美 —— 只是一个起点。
-目标是识别 skill 包（尤其是压缩或混合内容的包）中的潜在风险行为，并使检查变得更容易。
-
-更重要的是，这是一个协作的号召。
-
-如果你关心这个领域：
-
-* 贡献检测规则
-* 分享可疑模式
-* 提高分析覆盖率
-* 帮助定义 "安全 skills" 应该是什么样子
-
-我们还处于早期阶段。这正是它重要的原因。
-
-让我们一起建立更安全的基础。
+用于检测 **Agent Skills / GitHub 仓库中的潜在恶意行为与安全风险**，在运行前快速分析不可信代码。
 
 ---
 
-# Agent Skills Security Risks and Mitigation
+## 🔄 Language
 
-🔄 **语言选择 / Language Switch**  
-- [中文 (Chinese)](#agent-skills-安全风险与应对)  
-- [English](#agent-skills-security-risks-and-mitigation)
+* [English](#github-malware--security-scanner-for-agent-skills)
+* [中文](#github-恶意代码与安全扫描器agent-skills)
 
-As "agent skills" become more widely adopted, we're entering a new phase of software reuse — but also a new phase of security risk.
+---
 
-Most people treat skills like harmless building blocks. Copy, paste, run.
+## 🚀 功能特性
 
-But the reality is: **skills are executable logic**, often with access to sensitive data, system environments, and external APIs.
+* 🔍 检测可疑脚本（JavaScript / Python / Shell）
+* 🍪 识别 Cookie / Token 窃取行为
+* 📦 扫描压缩包（.zip）与混合文件结构
+* 🕵️ 检测隐藏命令与持久化机制
+* ⚠️ 标记高风险操作（系统访问 / 环境变量泄露 / 网络请求）
+* 🧠 专为 **Agent Skills / AI 工作流安全** 设计
 
-That means a malicious or poorly reviewed skill can:
+---
 
-* Exfiltrate cookies, tokens, or local files
-* Collect personal data (names, emails, system info)
-* Execute hidden commands or persistence mechanisms
-* Act as a silent backdoor in your workflow
+## ⚡ 为什么要做这个
 
-The problem isn't just individual bad actors — it's the *lack of a shared security mindset* around skills.
+很多人把 Agent Skills 当作“无害组件”：
 
-We need to start asking:
+> 复制 → 粘贴 → 运行
 
-* Where did this skill come from?
-* What does it actually do under the hood?
-* Has anyone audited or validated it?
+但实际上它们是**可执行代码**，可能访问：
 
-Security should not be an afterthought. It should be part of the skill ecosystem itself.
+* 本地文件
+* 环境变量（API Key / Token）
+* 系统信息
+* 外部网络
 
-To help move in that direction, I've put together a simple detection project:
-`https://github.com/szyszy070524/detection`
+这会带来真实风险：
 
-It's not meant to be perfect — just a starting point.
-The goal is to identify potentially risky behaviors in skill packages (especially zipped or mixed-content ones), and make inspection easier.
+* 数据泄露（Cookie / Token / 用户信息）
+* 工作流中的隐蔽后门
+* 静默执行恶意代码
 
-More importantly, this is a call for collaboration.
+本项目的目标是：
 
-If you care about this space:
+👉 在运行之前，**快速发现潜在风险**
 
-* Contribute detection rules
-* Share suspicious patterns
-* Improve analysis coverage
-* Help define what "safe skills" should look like
+---
 
-We're early. That's exactly why it matters.
+## 📦 支持扫描内容
 
-Let's build a safer foundation — together.
+* 单文件脚本（`.js` / `.py` / `.sh` 等）
+* 压缩包（`.zip`）
+* GitHub 仓库
+* Agent Skill 包
+
+---
+
+## 🛠️ 使用方法
+
+```bash
+git clone https://github.com/szyszy070524/detection
+cd detection
+
+# 示例
+# python main.py <path>
+```
+
+---
+
+## 🧪 示例检测能力
+
+* 可疑网络请求（数据外传）
+* 读取 Cookie / 本地存储
+* 访问系统 / 环境信息
+* 隐藏 shell 执行
+* 混淆或编码后的恶意逻辑
+
+---
+
+## 🤝 参与贡献
+
+这是一个早期项目，欢迎一起完善：
+
+* 增加检测规则
+* 分享恶意模式
+* 提高检测准确率
+* 扩展语言支持
+
+---
+
+## 🌍 愿景
+
+我们认为：
+
+> 安全应该是 Agent 生态的一部分，而不是事后补救
+
+随着 AI 工作流增长：
+
+👉 **盲目信任代码会成为巨大风险**
+
+本项目希望推动：
+
+* 更安全的 skill 共享
+* 更透明的代码行为分析
+* 社区驱动的安全标准
+
+---
+
+## ⭐ 支持一下
+
+如果你觉得这个项目有帮助，欢迎点个 Star ⭐
+这会帮助更多人发现它。
+
+---
+
+## 📜 License
+
+MIT
+
+---
+
+# GitHub Malware & Security Scanner for Agent Skills
+
+Detect malware, suspicious scripts, cookie stealing, and sensitive data leaks in agent skill packages and GitHub repositories.
+
+A lightweight tool to analyze untrusted code before you run it.
+
+---
+
+## 🚀 Features
+
+* 🔍 Detect suspicious scripts (JavaScript, Python, Shell)
+* 🍪 Identify cookie / token exfiltration
+* 📦 Scan zip packages and mixed file structures
+* 🕵️ Detect hidden commands and persistence behavior
+* ⚠️ Flag risky operations (system access, env leaks, network calls)
+* 🧠 Built for **Agent Skills / AI workflow security**
+
+---
+
+## ⚡ Why this exists
+
+Agent skills are often treated as harmless building blocks:
+
+> Copy. Paste. Run.
+
+But in reality, they are **executable logic** with access to:
+
+* local files
+* environment variables
+* API keys
+* system commands
+
+This creates real risks:
+
+* Data exfiltration
+* Hidden backdoors
+* Silent malicious execution
+
+This project helps you:
+
+👉 **Detect risks before trusting code**
+
+---
+
+## 📦 What it scans
+
+* Script files (`.js`, `.py`, `.sh`)
+* Compressed packages (`.zip`)
+* GitHub repositories
+* Agent skill bundles
+
+---
+
+## 🛠️ Usage
+
+```bash
+git clone https://github.com/szyszy070524/detection
+cd detection
+
+# example
+# python main.py <path>
+```
+
+---
+
+## 🧪 Example detections
+
+* Suspicious network activity
+* Cookie / token access
+* System / environment data access
+* Hidden shell execution
+* Obfuscated payloads
+
+---
+
+## 🤝 Contributing
+
+This is an early-stage project.
+
+You can help by:
+
+* Adding detection rules
+* Sharing suspicious patterns
+* Improving accuracy
+* Expanding language support
+
+---
+
+## 🌍 Vision
+
+Security should be part of the **agent ecosystem**, not an afterthought.
+
+As AI workflows grow:
+
+👉 Trusting code blindly will become a major risk.
+
+---
+
+## ⭐ Support
+
+If you find this useful, give it a star ⭐
+
+---
+
+## 📜 License
+
+MIT
